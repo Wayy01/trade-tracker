@@ -28,7 +28,7 @@ export function ViewSwitcher({
             type="button"
             onClick={() => onChange(v.value)}
             className={cn(
-              "flex-1 rounded-xl px-2 py-2 text-xs font-semibold transition",
+              "flex-1 rounded-xl px-2 py-1.5 text-xs font-semibold transition",
               active
                 ? "bg-primary/15 text-primary ring-1 ring-primary/25"
                 : "text-muted-foreground hover:text-foreground",

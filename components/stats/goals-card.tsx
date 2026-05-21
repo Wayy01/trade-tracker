@@ -38,7 +38,7 @@ export function GoalsCard({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex w-full flex-col rounded-2xl border border-border/60 bg-card/60 p-3 text-left transition hover:bg-card/80 active:scale-[0.99]"
+        className="flex w-full flex-col rounded-2xl border border-border/60 bg-card/60 p-2.5 text-left transition hover:bg-card/80 active:scale-[0.99]"
       >
         <GoalRow label={label} pnl={pnl} target={target} loading={loading} />
       </button>
@@ -65,14 +65,14 @@ function GoalRow({
 }) {
   if (loading) {
     return (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1">
         <div className="flex items-baseline justify-between">
           <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             {label}
           </span>
           <span className="text-xs text-muted-foreground">—</span>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-muted" />
+        <div className="h-1 w-full rounded-full bg-muted" />
       </div>
     );
   }
@@ -95,7 +95,7 @@ function GoalRow({
   const hitTarget = ratio >= 1;
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1">
       <div className="flex items-baseline justify-between">
         <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
           {label}
@@ -125,7 +125,7 @@ function GoalRow({
           <span className="text-muted-foreground"> / {formatEUR(target)}</span>
         </span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+      <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
         <div
           className={cn(
             "h-full rounded-full transition-[width] duration-300",

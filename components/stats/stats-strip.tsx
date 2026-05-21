@@ -31,7 +31,7 @@ export function StatsStrip({
           </div>
           <div
             className={cn(
-              "text-3xl font-extrabold tabular-nums leading-tight",
+              "text-2xl font-extrabold tabular-nums leading-tight",
               positive && "text-win",
               negative && "text-loss",
               totalPnL === 0 && "text-foreground",
@@ -44,7 +44,7 @@ export function StatsStrip({
           <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             Win rate
           </div>
-          <div className="text-xl font-bold tabular-nums">
+          <div className="text-lg font-bold tabular-nums">
             {loading || totalTrades === 0 ? "—" : `${Math.round(winRate * 100)}%`}
           </div>
         </div>

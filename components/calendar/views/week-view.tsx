@@ -21,7 +21,7 @@ export function WeekView({
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col">
-      <div className="grid grid-cols-5 gap-1 pb-2 text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground/80 sm:gap-2">
+      <div className="grid grid-cols-5 gap-1 pb-1 text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground/80 sm:gap-2">
         {WEEKDAYS.map((d) => (
           <div key={d} className="pl-1">
             {d}

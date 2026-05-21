@@ -21,9 +21,9 @@ export function BalanceCard({
   const [open, setOpen] = useState<null | "deposit" | "withdrawal">(null);
 
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-card/60 p-3">
-      <div className="flex items-center gap-2.5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20">
+    <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-card/60 p-2.5">
+      <div className="flex items-center gap-2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20">
           <Wallet className="h-4 w-4" />
         </div>
         <div className="flex flex-col">
@@ -32,7 +32,7 @@ export function BalanceCard({
           </span>
           <span
             className={cn(
-              "text-lg font-bold tabular-nums leading-none",
+              "text-base font-bold tabular-nums leading-none",
               balance > 0 && "text-foreground",
               balance < 0 && "text-loss",
             )}
@@ -52,7 +52,7 @@ export function BalanceCard({
           onClick={() => setOpen("deposit")}
           aria-label="Deposit"
           title="Deposit"
-          className="flex h-9 w-9 items-center justify-center rounded-xl text-foreground/60 transition hover:bg-card hover:text-win active:scale-95"
+          className="flex h-8 w-8 items-center justify-center rounded-xl text-foreground/60 transition hover:bg-card hover:text-win active:scale-95"
         >
           <Plus className="h-4 w-4" />
         </button>
@@ -61,7 +61,7 @@ export function BalanceCard({
           onClick={() => setOpen("withdrawal")}
           aria-label="Withdraw"
           title="Withdraw"
-          className="flex h-9 w-9 items-center justify-center rounded-xl text-foreground/60 transition hover:bg-card hover:text-loss active:scale-95"
+          className="flex h-8 w-8 items-center justify-center rounded-xl text-foreground/60 transition hover:bg-card hover:text-loss active:scale-95"
         >
           <Minus className="h-4 w-4" />
         </button>

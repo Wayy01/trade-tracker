@@ -38,8 +38,8 @@ export function CalendarCell({
         hasPnl && positive && "cell-glow-win border-win/40",
         hasPnl && !positive && "cell-glow-loss border-loss/40",
         size === "sm" && "p-1",
-        size === "md" && "p-1.5 sm:p-2",
-        size === "lg" && "p-2 sm:p-3",
+        size === "md" && "p-1 sm:p-1.5",
+        size === "lg" && "p-1.5 sm:p-2.5",
       )}
     >
       {showLabel && (

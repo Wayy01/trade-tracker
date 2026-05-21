@@ -15,9 +15,11 @@ export type GoalsSummary = {
 export function GoalsCard({
   summary,
   loading = false,
+  period,
 }: {
   summary: GoalsSummary | undefined;
   loading?: boolean;
+  period: "weekly" | "monthly";
 }) {
   const [open, setOpen] = useState(false);
 
@@ -26,26 +28,19 @@ export function GoalsCard({
   const weeklyPnL = summary?.weeklyPnL ?? 0;
   const monthlyPnL = summary?.monthlyPnL ?? 0;
 
+  const isWeekly = period === "weekly";
+  const label = isWeekly ? "Weekly" : "Monthly";
+  const target = isWeekly ? weeklyTarget : monthlyTarget;
+  const pnl = isWeekly ? weeklyPnL : monthlyPnL;
+
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex w-full flex-col gap-2.5 rounded-2xl border border-border/60 bg-card/60 p-3 text-left transition hover:bg-card/80 active:scale-[0.99]"
+        className="flex w-full flex-col rounded-2xl border border-border/60 bg-card/60 p-3 text-left transition hover:bg-card/80 active:scale-[0.99]"
       >
-        <GoalRow
-          label="Weekly"
-          pnl={weeklyPnL}
-          target={weeklyTarget}
-          loading={loading}
-        />
-        <div className="h-px bg-border/40" />
-        <GoalRow
-          label="Monthly"
-          pnl={monthlyPnL}
-          target={monthlyTarget}
-          loading={loading}
-        />
+        <GoalRow label={label} pnl={pnl} target={target} loading={loading} />
       </button>
       <GoalsForm
         open={open}

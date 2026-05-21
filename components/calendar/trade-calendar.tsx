@@ -144,7 +144,11 @@ export function TradeCalendar() {
           withdrawalsTotal={summary?.withdrawalsTotal ?? 0}
           loading={loading}
         />
-        <GoalsCard summary={goals} loading={goals === undefined} />
+        <GoalsCard
+          summary={goals}
+          loading={goals === undefined}
+          period={view === "week" ? "weekly" : "monthly"}
+        />
         <ViewSwitcher value={view} onChange={setView} />
       </div>
 

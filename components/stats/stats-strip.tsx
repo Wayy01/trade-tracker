@@ -20,8 +20,10 @@ export function StatsStrip({
 }) {
   const positive = totalPnL > 0;
   const negative = totalPnL < 0;
+  const hasTrades = !loading && totalTrades > 0;
+
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-0.5">
       <div className="flex items-baseline justify-between">
         <div>
           <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -47,36 +49,15 @@ export function StatsStrip({
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-2 rounded-2xl border border-border/60 bg-card/60 p-2.5 text-xs">
-        <Stat label="Trades" value={loading ? "—" : String(totalTrades)} />
-        <Stat label="Avg win" value={loading ? "—" : formatEUR(avgWin)} tone="win" />
-        <Stat label="Avg loss" value={loading ? "—" : formatEUR(avgLoss)} tone="loss" />
-      </div>
-    </div>
-  );
-}
-
-function Stat({
-  label,
-  value,
-  tone,
-}: {
-  label: string;
-  value: string;
-  tone?: "win" | "loss";
-}) {
-  return (
-    <div className="flex flex-col items-center">
-      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>
-      <span
-        className={cn(
-          "font-bold tabular-nums",
-          tone === "win" && "text-win",
-          tone === "loss" && "text-loss",
-        )}
-      >
-        {value}
-      </span>
+      {hasTrades && (
+        <div className="text-[11px] tabular-nums text-muted-foreground">
+          {totalTrades} {totalTrades === 1 ? "trade" : "trades"}
+          <span className="mx-1.5 text-foreground/30">·</span>
+          avg <span className="font-semibold text-win">{formatEUR(avgWin)}</span>
+          <span className="mx-1 text-foreground/30">/</span>
+          <span className="font-semibold text-loss">-{formatEUR(avgLoss)}</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { addMonths, format, startOfMonth, startOfYear } from "date-fns";
-import { isoDate } from "@/lib/dates";
+import { isoDate, isWeekday } from "@/lib/dates";
 import { gridDaysForMonth } from "@/lib/dates";
 import { isSameMonth } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ export function YearView({
     <div className="grid h-full w-full grid-cols-3 gap-3 overflow-y-auto md:grid-cols-4">
       {months.map((m) => {
         const monthStart = startOfMonth(m);
-        const days = gridDaysForMonth(m);
+        const days = gridDaysForMonth(m).filter(isWeekday);
         let monthPnl = 0;
         for (const d of days) {
           if (!isSameMonth(d, m)) continue;
@@ -54,7 +54,7 @@ export function YearView({
                 {monthPnl !== 0 ? (monthPnl > 0 ? "+" : "") + Math.round(monthPnl) + "€" : "—"}
               </span>
             </div>
-            <div className="grid grid-cols-7 gap-[2px]">
+            <div className="grid grid-cols-5 gap-[2px]">
               {days.map((d) => {
                 const iso = isoDate(d);
                 const v = pnlByDate.get(iso) ?? 0;

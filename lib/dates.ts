@@ -15,6 +15,11 @@ export type CalendarView = "week" | "month" | "two-month" | "three-month" | "yea
 export const isoDate = (d: Date) => format(d, "yyyy-MM-dd");
 export const isoTime = (d: Date) => format(d, "HH:mm");
 
+export function isWeekday(d: Date) {
+  const day = d.getDay();
+  return day !== 0 && day !== 6;
+}
+
 export function rangeFor(view: CalendarView, anchor: Date) {
   switch (view) {
     case "week": {

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Target, Pencil } from "lucide-react";
 import { formatEUR } from "@/lib/currency";
 import { cn } from "@/lib/utils";
 import { GoalsForm } from "@/components/stats/goals-form";
@@ -32,20 +31,8 @@ export function GoalsCard({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group flex w-full flex-col gap-2.5 rounded-2xl border border-border/60 bg-card/60 p-3 text-left transition hover:bg-card/80 active:scale-[0.99]"
+        className="flex w-full flex-col gap-2.5 rounded-2xl border border-border/60 bg-card/60 p-3 text-left transition hover:bg-card/80 active:scale-[0.99]"
       >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/20">
-              <Target className="h-3.5 w-3.5" />
-            </div>
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Goals
-            </span>
-          </div>
-          <Pencil className="h-3.5 w-3.5 text-foreground/40 transition group-hover:text-foreground/70" />
-        </div>
-
         <GoalRow
           label="Weekly"
           pnl={weeklyPnL}

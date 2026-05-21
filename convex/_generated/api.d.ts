@@ -9,6 +9,7 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as goals from "../goals.js";
 import type * as http from "../http.js";
 import type * as stats from "../stats.js";
 import type * as trades from "../trades.js";
@@ -22,6 +23,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  goals: typeof goals;
   http: typeof http;
   stats: typeof stats;
   trades: typeof trades;

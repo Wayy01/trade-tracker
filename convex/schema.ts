@@ -23,4 +23,10 @@ export default defineSchema({
   })
     .index("by_user_date", ["userId", "date"])
     .index("by_user", ["userId"]),
+
+  goals: defineTable({
+    userId: v.id("users"),
+    weeklyTarget: v.number(),
+    monthlyTarget: v.number(),
+  }).index("by_user", ["userId"]),
 });

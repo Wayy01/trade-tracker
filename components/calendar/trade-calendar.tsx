@@ -19,6 +19,7 @@ import { MultiMonthView } from "./views/multi-month-view";
 import { YearView } from "./views/year-view";
 import { StatsStrip } from "@/components/stats/stats-strip";
 import { BalanceCard } from "@/components/stats/balance-card";
+import { GoalsCard } from "@/components/stats/goals-card";
 import { SettingsMenu } from "@/components/ui/settings-menu";
 import { format } from "date-fns";
 
@@ -34,6 +35,19 @@ export function TradeCalendar() {
   const trades = useQuery(api.trades.listByRange, { fromDate, toDate });
   const summary = useQuery(api.stats.summary, { fromDate, toDate });
   const loading = trades === undefined || summary === undefined;
+
+  const goalRange = useMemo(() => {
+    const now = new Date();
+    const week = rangeFor("week", now);
+    const month = rangeFor("month", now);
+    return {
+      weekStart: isoDate(week.start),
+      weekEnd: isoDate(week.end),
+      monthStart: isoDate(month.start),
+      monthEnd: isoDate(month.end),
+    };
+  }, []);
+  const goals = useQuery(api.goals.summary, goalRange);
 
   const { pnlByDate, tradeCountByDate } = useMemo(() => {
     const pnl = new Map<string, number>();
@@ -130,6 +144,7 @@ export function TradeCalendar() {
           withdrawalsTotal={summary?.withdrawalsTotal ?? 0}
           loading={loading}
         />
+        <GoalsCard summary={goals} loading={goals === undefined} />
         <ViewSwitcher value={view} onChange={setView} />
       </div>
 
